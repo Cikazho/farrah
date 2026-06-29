@@ -4,7 +4,7 @@
 function updateCountdown() {
     // Tanggal pernikahan: 2 Juli 2026, 08:00 WIB
     // Format ISO 8601 dengan timezone WIB (UTC+7)
-    const weddingDate = new Date('2026-07-02T08:00:00+07:00').getTime();
+    const weddingDate = new Date('2026-07-02T15:00:00+07:00').getTime();
     const now = new Date().getTime();
     const distance = weddingDate - now;
 
