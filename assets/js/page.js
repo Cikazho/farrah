@@ -87,57 +87,6 @@ function showToast(message) {
 }
 
 
-/* ========================= */
-/* WISHES FORM */
-/* ========================= */
-document.getElementById('wishForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const attendance = document.getElementById('attendance').value;
-    const message = document.getElementById('message').value;
-    const date = new Date().toLocaleString('id-ID');
-
-    const wishItem = document.createElement('div');
-    wishItem.className = 'wish-item';
-    wishItem.innerHTML = `
-        <div class="wish-name">${name} <span style="color: #999; font-size: 14px;">(${attendance})</span></div>
-        <div class="wish-message">${message}</div>
-        <div class="wish-date">${date}</div>
-    `;
-
-    const list = document.getElementById('wishesList');
-    list.insertBefore(wishItem, list.firstChild);
-
-    // Save to localStorage
-    let wishes = JSON.parse(localStorage.getItem('wishes') || '[]');
-    wishes.unshift({ name, attendance, message, date });
-    localStorage.setItem('wishes', JSON.stringify(wishes));
-
-    this.reset();
-    showToast('Terima kasih atas ucapan dan doanya!');
-});
-
-/* ========================= */
-/* LOAD WISHES FROM LOCALSTORAGE */
-/* ========================= */
-function loadWishes() {
-    const wishes = JSON.parse(localStorage.getItem('wishes') || '[]');
-    const list = document.getElementById('wishesList');
-    
-    wishes.forEach(wish => {
-        const wishItem = document.createElement('div');
-        wishItem.className = 'wish-item';
-        wishItem.innerHTML = `
-            <div class="wish-name">${wish.name} <span style="color: #999; font-size: 14px;">(${wish.attendance})</span></div>
-            <div class="wish-message">${wish.message}</div>
-            <div class="wish-date">${wish.date}</div>
-        `;
-        list.appendChild(wishItem);
-    });
-}
-
-loadWishes();
 
 /* ========================= */
 /* SCROLL ANIMATION (FADE-IN) */
