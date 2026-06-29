@@ -17,6 +17,7 @@
 .hero {
     position: relative;
     height: 100vh;
+    overflow: none;
     height: 100dvh;
     min-height: 100vh;
     min-height: 100dvh;
@@ -310,7 +311,9 @@ body {
 .ayat-section {
     min-height: 100vh;
     padding: calc(var(--nav-height) + 2rem) 1.5rem 2rem;
-    background: var(--bg-alt);
+    background-image: url('assets/img/12345.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     text-align: center;
     display: flex;
     align-items: center;
@@ -439,23 +442,52 @@ body {
 .section-title {
     text-align: center;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
-    color: var(--primary);
+    color: var(--gold);
     margin-bottom: 0.5rem;
     font-weight: 400;
 }
-
+.section-title1 {
+    text-align: center;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--bg-alt);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
 .section-subtitle {
     text-align: center;
     font-size: 1rem;
-    color: var(--text-light);
+    color: var(--bg-alt);
+
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+.section-subtitle1 {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--gold);
+
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+.section-subtitle2 {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--bg-alt);
+
     letter-spacing: 1px;
     margin-bottom: 2rem;
 }
 
+
+/* ========================================
+   COUPLE SECTION - Single Card Layout
+======================================== */
 .couple-section {
     min-height: 100vh;
     padding: calc(var(--nav-height) + 2rem) 1.5rem 2rem;
-    background: var(--bg);
+        background-image: url('assets/img/wallpaper4.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -465,71 +497,198 @@ body {
 .couple-intro {
     text-align: center;
     max-width: 600px;
-    margin: 0 auto 2rem;
+    margin: 0 auto 2.5rem;
     font-size: 1rem;
-    color: var(--text-light);
+        color: #ffe7e7;
+
 }
 
-.couple-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+/* Card Tunggal */
+.couple-card-single {
     max-width: 900px;
+    width: 100%;
     margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-.couple-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    flex: 1;
-    min-width: 250px;
 }
 
-.couple-photo {
-    width: 180px;
-    height: 180px;
-    margin: 0 auto 1rem;
+/* Foto Bersama */
+.couple-photo-single {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto 2rem;
     border-radius: 50%;
     overflow: hidden;
-    border: 4px solid var(--gold-light);
-    box-shadow: 0 10px 30px rgba(160, 131, 92, 0.2);
+    border: 5px solid var(--gold-light);
+    box-shadow: 0 15px 40px rgba(160, 131, 92, 0.25);
+    position: relative;
 }
 
-.couple-photo img {
+.couple-photo-single::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+}
+
+.couple-photo-single img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s ease;
 }
 
-.couple-card:hover .couple-photo img {
+.couple-card-single:hover .couple-photo-single img {
     transform: scale(1.08);
+}
+
+/* Wrapper Nama & Orang Tua */
+.couple-names-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.couple-name-item {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
 }
 
 .couple-name {
     font-size: 2rem;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
+    color: #ffe7e7;
+
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
 }
 
 .couple-parents {
-    color: var(--text-light);
-    font-size: 0.9rem;
+    color: #ffe7e7;
+
+    font-size: 0.95rem;
     line-height: 1.8;
 }
 
-.couple-and {
+/* Ampersand di tengah */
+.couple-ampersand {
     font-family: 'Great Vibes', cursive;
     font-size: 3.5rem;
-    color: var(--gold);
+    text-align: center;
+    color: var(--bg-alt);
     flex-shrink: 0;
+    line-height: 1;
+    padding-top: 0.5rem;
+}
+
+/* ========================================
+   RESPONSIVE - TABLET (max-width: 992px)
+======================================== */
+@media (max-width: 992px) {
+    .couple-photo-single {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .couple-name {
+        font-size: 1.8rem;
+    }
+    
+    .couple-ampersand {
+        font-size: 3rem;
+    }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE (max-width: 768px)
+======================================== */
+@media (max-width: 768px) {
+    .couple-photo-single {
+        width: 240px;
+        height: 240px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .couple-names-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .couple-name-item {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .couple-name {
+        font-size: 1.8rem;
+    }
+    
+    .couple-parents {
+        font-size: 0.9rem;
+    }
+    
+    .couple-ampersand {
+        font-size: 3rem;
+        padding-top: 0;
+        margin: 0.5rem 0;
+    }
+}
+
+/* ========================================
+   RESPONSIVE - SMALL MOBILE (max-width: 480px)
+======================================== */
+@media (max-width: 480px) {
+    .couple-photo-single {
+        width: 200px;
+        height: 200px;
+        border-width: 4px;
+    }
+    
+    .couple-name {
+        font-size: 1.6rem;
+    }
+    
+    .couple-parents {
+        font-size: 0.85rem;
+    }
+    
+    .couple-ampersand {
+        font-size: 2.5rem;
+    }
+}
+
+/* ========================================
+   RESPONSIVE - VERY SMALL (max-width: 360px)
+======================================== */
+@media (max-width: 360px) {
+    .couple-photo-single {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .couple-name {
+        font-size: 1.4rem;
+    }
+    
+    .couple-ampersand {
+        font-size: 2.2rem;
+    }
 }
 
 .countdown-section {
     min-height: 100vh;
     padding: calc(var(--nav-height) + 2rem) 1.5rem 2rem;
-    background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%);
+    background-image: url('assets/img/wallpaper2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -602,7 +761,9 @@ body {
 .event-section {
     min-height: 100vh;
     padding: calc(var(--nav-height) + 2rem) 1.5rem 2rem;
-    background: var(--bg);
+    background-image: url('assets/img/wallpaper1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -781,7 +942,9 @@ body {
 .gallery-section {
     min-height: 100vh;
     padding: calc(var(--nav-height) + 2rem) 1.5rem 2rem;
-    background: var(--bg-alt);
+    background-image: url('assets/img/wallpaper5.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -819,7 +982,9 @@ body {
 .gift-section {
     min-height: 100vh;
     padding: calc(var(--nav-height) + 2rem) 1.5rem 2rem;
-    background: var(--bg);
+    background-image: url('assets/img/wallpaper6.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -830,7 +995,7 @@ body {
     text-align: center;
     max-width: 600px;
     margin: 0 auto 2rem;
-    color: var(--text-light);
+    color: var(--bg-alt);
     font-size: 1rem;
 }
 
@@ -889,92 +1054,6 @@ body {
     color: var(--white);
 }
 
-.wishes-section {
-    min-height: 80vh;
-    padding: calc(var(--nav-height) + 2rem) 1.5rem 2rem;
-    background: var(--bg-alt);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.wishes-form {
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    width: 100%;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    border: 1.5px solid rgba(160, 131, 92, 0.2);
-    border-radius: 8px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--text);
-    background: var(--white);
-    transition: var(--transition);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(160, 131, 92, 0.1);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-.btn-submit {
-    width: 100%;
-    background: var(--primary);
-    color: var(--white);
-    border: none;
-    padding: 1rem;
-    border-radius: 8px;
-    font-family: 'Andada Pro', serif;
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-submit:hover {
-    background: var(--primary-dark);
-    transform: translateY(-1px);
-}
-
-.wishes-list {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    overflow-y: auto;
-    max-height: 200px;
-}
-
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -987,14 +1066,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .couple-and {
-        font-size: 3rem;
-        width: 100%;
-        text-align: center;
-    }
-    .couple-container {
-        gap: 1.5rem;
-    }
     .countdown-number {
         font-size: 2rem;
     }
@@ -1045,4 +1116,542 @@ body {
             opacity: 1;
         }
 
-        
+        /* ========================================
+   GRATITUDE SECTION (Ucapan Syukur)
+======================================== */
+.gratitude-section {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: calc(var(--nav-height) + 3rem) 2rem 3rem;
+    background-image: url('assets/img/1234.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top; /* Fokus ke bagian atas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.gratitude-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+    position: relative;
+    z-index: 2;
+}
+
+.gratitude-ornament {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.gratitude-ornament::before,
+.gratitude-ornament::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--gold-light) 50%,
+        transparent 100%);
+}
+
+.gratitude-ornament::before {
+    right: calc(50% + 25px);
+}
+
+.gratitude-ornament::after {
+    left: calc(50% + 25px);
+}
+
+.gratitude-ornament span {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: var(--primary);
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.gratitude-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 2;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    text-justify: inter-word;
+    letter-spacing: 0.3px;
+}
+
+.gratitude-text:last-of-type {
+    margin-bottom: 0;
+}
+
+/* ========================================
+   RESPONSIVE - TABLET (max-width: 992px)
+======================================== */
+@media (max-width: 992px) {
+    .gratitude-section {
+        padding: calc(var(--nav-height) + 2.5rem) 1.5rem 2.5rem;
+    }
+    
+    .gratitude-content {
+        max-width: 500px;
+    }
+    
+    .gratitude-text {
+        font-size: clamp(1rem, 1.8vw, 1.15rem);
+        line-height: 1.9;
+    width: 400px;
+
+    }
+    
+    .gratitude-ornament::before,
+    .gratitude-ornament::after {
+        width: 60px;
+    }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE (max-width: 768px)
+======================================== */
+@media (max-width: 768px) {
+    .gratitude-section {
+        padding: calc(var(--nav-height) + 2rem) 1.25rem 2rem;
+    }
+    
+    .gratitude-content {
+        max-width: 100%;
+    }
+    
+    .gratitude-text {
+        font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+        line-height: 1.85;
+    width: 250px;
+
+        text-align: justify;
+        margin-bottom: 1.25rem;
+    }
+    
+    .gratitude-ornament {
+        margin: 1.5rem 0;
+    }
+    
+    .gratitude-ornament span {
+        font-size: 1.3rem;
+    }
+    
+    .gratitude-ornament::before,
+    .gratitude-ornament::after {
+        width: 50px;
+    }
+    
+    .gratitude-ornament::before {
+        right: calc(50% + 20px);
+    }
+    
+    .gratitude-ornament::after {
+        left: calc(50% + 20px);
+    }
+}
+
+/* ========================================
+   RESPONSIVE - SMALL MOBILE (max-width: 480px)
+======================================== */
+@media (max-width: 480px) {
+    .gratitude-section {
+        padding: calc(var(--nav-height) + 1.5rem) 1rem 1.5rem;
+    }
+    
+    .gratitude-text {
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+        line-height: 1.8;
+    width: 280px;
+
+        margin-bottom: 1rem;
+        text-align: left; /* Lebih mudah dibaca di mobile kecil */
+    }
+    
+    .gratitude-ornament {
+        margin: 1.25rem 0;
+    }
+    
+    .gratitude-ornament span {
+        font-size: 1.1rem;
+    }
+    
+    .gratitude-ornament::before,
+    .gratitude-ornament::after {
+        width: 40px;
+    }
+    
+    .gratitude-ornament::before {
+        right: calc(50% + 15px);
+    }
+    
+    .gratitude-ornament::after {
+        left: calc(50% + 15px);
+    }
+}
+
+/* ========================================
+   RESPONSIVE - VERY SMALL (max-width: 360px)
+======================================== */
+@media (max-width: 360px) {
+    .gratitude-section {
+        padding: calc(var(--nav-height) + 1.25rem) 0.8rem 1.25rem;
+    }
+    
+    .gratitude-text {
+        font-size: 0.9rem;
+    width: 200px;
+
+        line-height: 1.75;
+    }
+    
+    .gratitude-ornament span {
+        font-size: 1rem;
+    }
+    
+    .gratitude-ornament::before,
+    .gratitude-ornament::after {
+        width: 30px;
+    }
+}
+
+/* ========================================
+   RESPONSIVE - LARGE DESKTOP (min-width: 1440px)
+======================================== */
+@media (min-width: 1440px) {
+    .gratitude-content {
+        max-width: 900px;
+    }
+    
+    .gratitude-text {
+        font-size: 1.3rem;
+        line-height: 2.1;
+    }
+    
+    .gratitude-ornament::before,
+    .gratitude-ornament::after {
+        width: 100px;
+    }
+}
+
+/* ========================================
+   INITIALS & SCHEDULE SECTION (A & R)
+======================================== */
+.initials-section {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: linear-gradient(135deg, #6D0E0E 0%, #8B1A1A 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+}
+
+.initials-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/img/first/texture.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.initials-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 600px;
+}
+
+.initials-frame {
+    background: rgba(255, 255, 255, 0.05);
+    border: 3px solid rgba(245, 230, 184, 0.3);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+.re{
+    position: absolute;
+    z-index: 100;
+}
+
+.initials-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.initial {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(4rem, 10vw, 6rem);
+    color: var(--gold-light);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1;
+}
+
+.ampersand {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3rem, 8vw, 4rem);
+    color: var(--gold-light);
+    opacity: 0.8;
+}
+
+.initials-divider {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    margin: 1.5rem auto;
+}
+
+.schedule-info {
+    color: var(--white);
+}
+
+.schedule-date {
+    font-family: 'Andada Pro', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+    color: var(--gold-light);
+}
+
+.schedule-time {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.schedule-location {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* Scroll Down Indicator */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gold-light);
+    animation: bounce 2s infinite;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.scroll-down i {
+    font-size: 1.5rem;
+}
+
+.scroll-down span {
+    font-family: 'Andada Pro', serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* ========================================
+   THANK YOU SECTION
+======================================== */
+.thankyou-section {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: linear-gradient(180deg, #f3efe8 0%, #e8e0d5 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.thankyou-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, rgba(109, 14, 14, 0.05) 0%, transparent 100%);
+}
+
+.thankyou-content {
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.thankyou-ornament-top,
+.thankyou-ornament-bottom {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    opacity: 0.6;
+}
+
+.thankyou-ornament-top {
+    top: -50px;
+}
+
+.thankyou-ornament-bottom {
+    bottom: -50px;
+}
+
+.ornament-flower {
+    width: 100%;
+    height: auto;
+}
+
+.flip-vertical {
+    transform: rotate(180deg);
+}
+
+.thankyou-title {
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    color: var(--primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.thankyou-divider {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    margin: 1.5rem auto;
+}
+
+.thankyou-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--text);
+    line-height: 2;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+}
+
+.thankyou-couple {
+    margin-top: 2rem;
+}
+
+.couple-initials {
+    font-size: clamp(3rem, 6vw, 4rem);
+    color: var(--primary);
+    margin: 0;
+}
+
+/* ========================================
+   RESPONSIVE - INITIALS SECTION
+======================================== */
+@media (max-width: 768px) {
+    .initials-frame {
+        padding: 2rem 1.5rem;
+    }
+    
+    .initials-text {
+        gap: 1rem;
+    }
+    
+    .schedule-date {
+        font-size: 1.1rem;
+    }
+    
+    .schedule-time,
+    .schedule-location {
+        font-size: 0.95rem;
+    }
+    
+    .scroll-down {
+        bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .initials-frame {
+        padding: 1.5rem 1rem;
+        border-width: 2px;
+    }
+    
+    .initial {
+        font-size: 3rem;
+    }
+    
+    .ampersand {
+        font-size: 2rem;
+    }
+    
+    .schedule-info {
+        margin-top: 1rem;
+    }
+}
+
+/* ========================================
+   RESPONSIVE - THANK YOU SECTION
+======================================== */
+@media (max-width: 768px) {
+    .thankyou-section {
+        padding: 2rem 1.25rem;
+    }
+    
+    .thankyou-message {
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+    
+    .thankyou-ornament-top,
+    .thankyou-ornament-bottom {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .thankyou-section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .thankyou-message {
+        font-size: 1rem;
+    }
+    
+    .thankyou-ornament-top,
+    .thankyou-ornament-bottom {
+        width: 120px;
+    }
+}
